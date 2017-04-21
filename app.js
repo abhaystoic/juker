@@ -1,15 +1,15 @@
-var http = require("http");
+//https://scotch.io/tutorials/node-and-angular-to-do-app-application-organization-and-structure
 
-http.createServer(function (request, response) {
+// set up ======================================================================
+var express  = require('express');
+var app      = express();
+var port		 = 8081;
+// load the routes
+require('./routes/routes.js')(app);
 
-   // Send the HTTP header 
-   // HTTP Status: 200 : OK
-   // Content Type: text/plain
-   response.writeHead(200, {'Content-Type': 'text/plain'});
-   
-   // Send the response body as "Hello World"
-   response.end('Hello World\n');
-}).listen(8081);
+app.use(express.static(__dirname + '/public'));
 
-// Console will print the message
-console.log('Server running at http://127.0.0.1:8081/');
+
+// listen (start app with node server.js) ======================================
+app.listen(port);
+console.log("App listening on port " + port);
