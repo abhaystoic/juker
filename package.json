@@ -1,0 +1,21 @@
+{
+  "name": "juker",
+  "version": "0.0.0",
+  "description": "Music Box",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhaystoic/juker"
+  },
+  "author": "Abhay Gupta",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/abhaystoic/juker/issues"
+  },
+  "dependencies": {
+    "express": "~4.15.2"
+  }
+}

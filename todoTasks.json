@@ -1,0 +1,19 @@
+[ 
+      {    
+          "task": "buy milk", 
+        "complete":false 
+    }, 
+    { 
+        "task": "toast bread", 
+        "complete":false 
+    }, 
+    { 
+        "task": "pick up newspaper", 
+        "complete":false 
+    }, 
+    { 
+        "task": "water flowers", 
+        "complete":false 
+    }
+
+]
