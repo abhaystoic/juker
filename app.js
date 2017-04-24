@@ -5,7 +5,7 @@ var express  = require('express');
 var app      = express();
 var port		 = 8081;
 // load the routes
-require('./routes/routes.js')(app);
+require('./routes.js')(app);
 
 app.use(express.static(__dirname + '/public'));
 
