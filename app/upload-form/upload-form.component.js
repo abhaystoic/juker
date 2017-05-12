@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./music-properties"], function(exports_1, context_1) {
+System.register(["angular2/core"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,20 +10,18 @@ System.register(["angular2/core", "./music-properties"], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, music_properties_1;
+    var core_1;
     var UploadFormComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (music_properties_1_1) {
-                music_properties_1 = music_properties_1_1;
             }],
         execute: function() {
             UploadFormComponent = (function () {
                 function UploadFormComponent() {
                     this.multiple = false;
+                    this.arrayOfKeys = [];
                     this.musicQueue = [];
                     this.active = true;
                 }
@@ -37,9 +35,12 @@ System.register(["angular2/core", "./music-properties"], function(exports_1, con
                             console.log(inputEl.files.item(i));
                             // formData.append('file[]', inputEl.files.item(i));
                             item = inputEl.files.item(i);
-                            this.musicQueue.push(new music_properties_1.Music(item.name, item.size, item.lastModifiedDate));
+                            this.musicQueue.push({ name: item.name,
+                                size: item.size,
+                                lastModifiedDate: item.lastModifiedDate
+                            });
                         }
-                        console.log(this.musicQueue);
+                        this.arrayOfKeys = Object.keys(this.musicQueue);
                     }
                 };
                 __decorate([
@@ -53,7 +54,8 @@ System.register(["angular2/core", "./music-properties"], function(exports_1, con
                 UploadFormComponent = __decorate([
                     core_1.Component({
                         selector: "upload-form",
-                        templateUrl: "app/upload-form/upload-form.tpl.html"
+                        templateUrl: "app/upload-form/upload-form.tpl.html",
+                        styleUrls: ["app/upload-form/mdb.min.css"]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], UploadFormComponent);

@@ -3,18 +3,19 @@ import {Music} from "./music-properties";
 
 @Component({
   selector: "upload-form",
-  templateUrl: "app/upload-form/upload-form.tpl.html"
+  templateUrl: "app/upload-form/upload-form.tpl.html",
+  styleUrls: ["app/upload-form/mdb.min.css"]
 })
 
 export class UploadFormComponent {
   @Input() multiple: boolean = false;
   @ViewChild('fileInput') inputEl: ElementRef;
-  musicQueue: Music[] = [];
+  arrayOfKeys = [];
+  musicQueue = [];
   
   constructor() {}
 
   active = true;
-
 
   addMusic() {
     let inputEl: HTMLInputElement = this.inputEl.nativeElement;
@@ -26,12 +27,12 @@ export class UploadFormComponent {
         console.log(inputEl.files.item(i));
         // formData.append('file[]', inputEl.files.item(i));
         item = inputEl.files.item(i);
-        this.musicQueue.push(new Music(item.name,
-                                       item.size,
-                                       item.lastModifiedDate
-        ));
+        this.musicQueue.push({name : item.name,
+                              size : item.size,
+                              lastModifiedDate: item.lastModifiedDate
+        });
       }
-      console.log(this.musicQueue);
+      this.arrayOfKeys = Object.keys(this.musicQueue);
     }
   }
 }

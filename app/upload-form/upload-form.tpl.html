@@ -1,4 +1,5 @@
 <br><br><br><br>
+<div>
 <div class="col-lg-6 col-sm-6 col-12">
     <h4>Upload your music files</h4>
     <div class="input-group">
@@ -16,4 +17,63 @@
         Try selecting one or more files and watch the feedback
     </span>
 </div>
+<div class="col-lg-6 col-sm-6 col-12">
+    <h4>Paste YouTube link</h4>
+    <div class="input-group">
+        <label class="input-group-btn">
+            <input type="text" class="form-control">
+        </label>
+    </div>
+    <span class="help-block">
+        Paste your favorite YouTube song's link
+    </span>
+</div>
+</div>
+<!--
 
+<div>
+  <ul>
+    <li *ngFor="#key of arrayOfKeys" >
+      {{musicQueue[key].name}}
+    </li>
+  </ul>
+</div>-->
+
+<div class="col-md-4" *ngFor="#key of arrayOfKeys">
+
+    <!--Card-->
+    <div class="card card-cascade wider">
+
+        <!--Card image-->
+        <div class="view overlay hm-white-slight">
+            <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2813%29.jpg" class="img-fluid">
+            <a href="#!">
+                <div class="mask waves-effect waves-light"></div>
+            </a>
+        </div>
+        <!--/Card image-->
+
+        <!--Card content-->
+        <div class="card-block text-center">
+            <!--Title-->
+            <h4 class="card-title"><strong>{{musicQueue[key].name}}</strong></h4>
+            <!--<h5>Photographer</h5>-->
+
+            <!--<p class="card-text">Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem aperiam. </p>-->
+
+            <!--Dribbble-->
+            <a class="icons-sm drib-ic"><i class="fa fa-dribbble"> </i></a>
+            <!--Linkedin-->
+            <a class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+            <!--Google +-->
+            <a class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a>
+            <!--Instagram-->
+            <a class="icons-sm ins-ic"><i class="fa fa-instagram"> </i></a>
+
+        </div>
+        <!--/.Card content-->
+
+    </div>
+    <!--/.Card-->
+
+</div>
