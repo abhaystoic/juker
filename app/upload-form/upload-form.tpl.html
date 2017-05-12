@@ -1,0 +1,19 @@
+<br><br><br><br>
+<div class="col-lg-6 col-sm-6 col-12">
+    <h4>Upload your music files</h4>
+    <div class="input-group">
+        <label class="input-group-btn">
+            <span class="btn btn-primary">
+                Browse&hellip; <input type="file" style="display: none;"
+                                      ngf-select ng-model="file" name="file"
+                                      ngf-max-size="20MB"
+                                      [multiple]="multiple" #fileInput>
+            </span>
+        </label>
+        <input type="text" class="form-control" readonly>
+    </div>
+    <span class="help-block">
+        Try selecting one or more files and watch the feedback
+    </span>
+</div>
+

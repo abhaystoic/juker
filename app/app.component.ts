@@ -1,17 +1,17 @@
 // component's metadata can be accessed using this primary Angular library
 import {Component, View} from "angular2/core";
-import {ItemComponent} from "./item-list.component";
-import {PlayersListComponent} from "./player-list.component";
-import {FormComponent} from "./form/form.component"
+import {SignInComponent} from "./sign-in/sign-in.component"
+import {UploadFormComponent} from "./upload-form/upload-form.component"
 
 //framework recognizes @Component annotation and knows that we are trying to create a new component
 @Component({
    selector: 'app',  //specifies selector for HTML element named 'app'
-   template: `<my-list></my-list>
-              <player-list></player-list>
-              <contact-form></contact-form>
+   template: `<upload-form  #fu (change)="fu.addMusic()" [multiple]="true"></upload-form>
    `,
-   directives: [ItemComponent, PlayersListComponent, FormComponent]
+   directives: [
+                SignInComponent,
+                UploadFormComponent
+   ]
 })
 
 // @View({
