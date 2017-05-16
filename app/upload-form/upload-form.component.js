@@ -35,7 +35,8 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                             console.log(inputEl.files.item(i));
                             // formData.append('file[]', inputEl.files.item(i));
                             item = inputEl.files.item(i);
-                            this.musicQueue.push({ name: item.name,
+                            this.musicQueue.push({
+                                name: item.name,
                                 size: item.size,
                                 lastModifiedDate: item.lastModifiedDate
                             });
@@ -55,7 +56,10 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                     core_1.Component({
                         selector: "upload-form",
                         templateUrl: "app/upload-form/upload-form.tpl.html",
-                        styleUrls: ["app/upload-form/mdb.min.css"]
+                        styleUrls: [
+                            "app/upload-form/mdb.css",
+                            "app/upload-form/upload-form.css"
+                        ]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], UploadFormComponent);
