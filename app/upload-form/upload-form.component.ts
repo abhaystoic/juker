@@ -1,4 +1,5 @@
 import {Component, ElementRef, Input, ViewChild} from "angular2/core";
+import {Http, Headers} from "angular2/http";
 import {Music} from "./music-properties";
 
 @Component({
@@ -16,7 +17,7 @@ export class UploadFormComponent {
   arrayOfKeys = [];
   musicQueue = [];
   
-  constructor() {}
+  constructor(public http: Http) {}
 
   active = true;
 
@@ -28,7 +29,6 @@ export class UploadFormComponent {
     if(fileCount > 0){
       for(let i=0; i<fileCount; i++){
         console.log(inputEl.files.item(i));
-        // formData.append('file[]', inputEl.files.item(i));
         item = inputEl.files.item(i);
         this.musicQueue.push({
                               name : item.name,
@@ -37,6 +37,27 @@ export class UploadFormComponent {
         });
       }
       this.arrayOfKeys = Object.keys(this.musicQueue);
+      
+      //Attempt to upload
+      this.upload(inputEl.files)
+          .subscribe(res => {
+            console.log(res);
+      });
     }
+  }
+
+  upload(fileToUpload: any) {
+      console.log("fileToUpload===", fileToUpload);
+      let input = new FormData();
+      input.append("file", fileToUpload);
+
+      const headers = new Headers();
+      headers.append('Access-Control-Request-Headers', 'Content-Type');
+      headers.append('Access-Control-Request-Method', 'POST');
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      
+      console.log("input===", input, headers);
+      return this.http.post("http://localhost:8081/upload/", input, {"Headers": headers});
   }
 }
