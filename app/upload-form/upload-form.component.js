@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/http"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/http", "./file_upload_service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/http"], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, file_upload_service_1;
     var UploadFormComponent;
     return {
         setters:[
@@ -19,21 +19,29 @@ System.register(["angular2/core", "angular2/http"], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (file_upload_service_1_1) {
+                file_upload_service_1 = file_upload_service_1_1;
             }],
         execute: function() {
             UploadFormComponent = (function () {
-                function UploadFormComponent(http) {
+                function UploadFormComponent(http, fileUploadService) {
                     this.http = http;
+                    this.fileUploadService = fileUploadService;
                     this.multiple = false;
                     this.arrayOfKeys = [];
                     this.musicQueue = [];
+                    this.uploadRoute = "http://localhost:8081/upload/";
                     this.active = true;
                 }
                 UploadFormComponent.prototype.addMusic = function () {
+                    var _this = this;
                     var inputEl = this.inputEl.nativeElement;
                     var fileCount = inputEl.files.length;
                     var formData = new FormData();
                     var item;
+                    var uploadProgress;
+                    var result;
                     if (fileCount > 0) {
                         for (var i = 0; i < fileCount; i++) {
                             console.log(inputEl.files.item(i));
@@ -46,10 +54,20 @@ System.register(["angular2/core", "angular2/http"], function(exports_1, context_
                         }
                         this.arrayOfKeys = Object.keys(this.musicQueue);
                         //Attempt to upload
-                        this.upload(inputEl.files)
-                            .subscribe(function (res) {
-                            console.log(res);
+                        /*this.upload(inputEl.files)
+                            .subscribe(res => {
+                              console.log(res);
+                        });*/
+                        this.fileUploadService.getObserver()
+                            .subscribe(function (progress) {
+                            _this.uploadProgress = progress;
                         });
+                        try {
+                            result = this.fileUploadService.upload(this.uploadRoute, inputEl.files);
+                        }
+                        catch (error) {
+                            document.write(error);
+                        }
                     }
                 };
                 UploadFormComponent.prototype.upload = function (fileToUpload) {
@@ -76,12 +94,13 @@ System.register(["angular2/core", "angular2/http"], function(exports_1, context_
                     core_1.Component({
                         selector: "upload-form",
                         templateUrl: "app/upload-form/upload-form.tpl.html",
+                        providers: [file_upload_service_1.FileUploadService],
                         styleUrls: [
                             "app/upload-form/mdb.css",
                             "app/upload-form/upload-form.css"
                         ]
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, file_upload_service_1.FileUploadService])
                 ], UploadFormComponent);
                 return UploadFormComponent;
             }());
