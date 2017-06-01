@@ -1,0 +1,73 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@1.4.21
+3 info using node@v0.10.25
+4 warn package.json juker@1.0.0 No description
+5 warn package.json juker@1.0.0 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ '/home/abhay/workspace/juker',
+7 verbose install   [ 'angular2',
+7 verbose install     'es6-promise',
+7 verbose install     'es6-shim',
+7 verbose install     'fs',
+7 verbose install     'fs-extra',
+7 verbose install     'reflect-metadata',
+7 verbose install     'rxjs',
+7 verbose install     'systemjs',
+7 verbose install     'typescript-require',
+7 verbose install     'zone.js',
+7 verbose install     'concurrently',
+7 verbose install     'lite-server',
+7 verbose install     'typescript',
+7 verbose install     'typings' ] ]
+8 info preinstall juker@1.0.0
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping angular2@2.0.0-beta.7 /home/abhay/workspace/juker
+11 verbose already installed skipping es6-promise@^3.0.2 /home/abhay/workspace/juker
+12 verbose already installed skipping es6-shim@^0.33.3 /home/abhay/workspace/juker
+13 verbose already installed skipping fs@0.0.1-security /home/abhay/workspace/juker
+14 verbose already installed skipping reflect-metadata@0.1.2 /home/abhay/workspace/juker
+15 verbose already installed skipping fs-extra@^3.0.1 /home/abhay/workspace/juker
+16 verbose already installed skipping rxjs@^5.4.0 /home/abhay/workspace/juker
+17 verbose already installed skipping systemjs@0.19.22 /home/abhay/workspace/juker
+18 verbose already installed skipping typescript-require@^0.2.9-1 /home/abhay/workspace/juker
+19 verbose already installed skipping zone.js@^0.5.15 /home/abhay/workspace/juker
+20 verbose already installed skipping concurrently@^2.0.0 /home/abhay/workspace/juker
+21 verbose already installed skipping typescript@^1.7.5 /home/abhay/workspace/juker
+22 verbose already installed skipping lite-server@^2.1.0 /home/abhay/workspace/juker
+23 verbose already installed skipping typings@^0.6.8 /home/abhay/workspace/juker
+24 silly resolved []
+25 info build /home/abhay/workspace/juker
+26 verbose linkStuff [ false, false, false, '/home/abhay/workspace' ]
+27 info linkStuff juker@1.0.0
+28 verbose linkBins juker@1.0.0
+29 verbose linkMans juker@1.0.0
+30 verbose rebuildBundles juker@1.0.0
+31 verbose rebuildBundles [ '.bin',
+31 verbose rebuildBundles   'angular2',
+31 verbose rebuildBundles   'concurrently',
+31 verbose rebuildBundles   'es6-promise',
+31 verbose rebuildBundles   'es6-shim',
+31 verbose rebuildBundles   'fs',
+31 verbose rebuildBundles   'fs-extra',
+31 verbose rebuildBundles   'lite-server',
+31 verbose rebuildBundles   'reflect-metadata',
+31 verbose rebuildBundles   'rxjs',
+31 verbose rebuildBundles   'systemjs',
+31 verbose rebuildBundles   'typescript',
+31 verbose rebuildBundles   'typescript-require',
+31 verbose rebuildBundles   'typings',
+31 verbose rebuildBundles   'zone.js' ]
+32 info install juker@1.0.0
+33 info postinstall juker@1.0.0
+34 verbose unsafe-perm in lifecycle true
+35 info prepublish juker@1.0.0
+36 error peerinvalid The package rxjs does not satisfy its siblings' peerDependencies requirements!
+36 error peerinvalid Peer angular2@2.0.0-beta.7 wants rxjs@5.0.0-beta.2
+37 error System Linux 3.16.0-44-generic
+38 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+39 error cwd /home/abhay/workspace/juker
+40 error node -v v0.10.25
+41 error npm -v 1.4.21
+42 error code EPEERINVALID
+43 verbose exit [ 1, true ]
