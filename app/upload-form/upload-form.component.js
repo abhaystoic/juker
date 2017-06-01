@@ -34,6 +34,44 @@ System.register(["angular2/core", "angular2/http", "./file_upload_service"], fun
                     this.uploadRoute = "http://localhost:8081/upload/";
                     this.active = true;
                 }
+                UploadFormComponent.prototype.upload = function (fileToUpload) {
+                    console.log("fileToUpload===", fileToUpload);
+                    var input = new FormData();
+                    input.append("file", fileToUpload);
+                    var headers = new http_1.Headers({
+                        'Access-Control-Request-Headers': 'access-control-allow-origin,content-type',
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'http://localhost:3000',
+                    });
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    console.log("input===", input, headers);
+                    this.createCORSRequest("POST", "http://localhost:8081/upload/", input);
+                    // return this.http.post("http://localhost:8081/upload/", input, options);
+                };
+                UploadFormComponent.prototype.createCORSRequest = function (method, url, input) {
+                    var xhr = new XMLHttpRequest();
+                    console.log(1);
+                    if ("withCredentials" in xhr) {
+                        // XHR for Chrome/Firefox/Opera/Safari.
+                        xhr.open(method, url, true);
+                        xhr.setRequestHeader("Content-type", input.type);
+                        xhr.setRequestHeader("X_FILE_NAME", input.name);
+                        xhr.send(input);
+                        console.log(2, xhr);
+                    }
+                    else if (typeof XDomainRequest != "undefined") {
+                        // XDomainRequest for IE.
+                        xhr = new XDomainRequest();
+                        xhr.open(method, url);
+                        xhr.send(input);
+                    }
+                    else {
+                        // CORS not supported.
+                        xhr = null;
+                    }
+                    console.log(3);
+                    return xhr;
+                };
                 UploadFormComponent.prototype.addMusic = function () {
                     var _this = this;
                     var inputEl = this.inputEl.nativeElement;
@@ -54,6 +92,7 @@ System.register(["angular2/core", "angular2/http", "./file_upload_service"], fun
                         }
                         this.arrayOfKeys = Object.keys(this.musicQueue);
                         //Attempt to upload
+<<<<<<< HEAD
                         /*this.upload(inputEl.files)
                             .subscribe(res => {
                               console.log(res);
@@ -68,19 +107,10 @@ System.register(["angular2/core", "angular2/http", "./file_upload_service"], fun
                         catch (error) {
                             document.write(error);
                         }
+=======
+                        this.upload(inputEl.files.item(0));
+>>>>>>> 89dfe93a171877bfc83824dd598c0af04cb3f199
                     }
-                };
-                UploadFormComponent.prototype.upload = function (fileToUpload) {
-                    console.log("fileToUpload===", fileToUpload);
-                    var input = new FormData();
-                    input.append("file", fileToUpload);
-                    var headers = new http_1.Headers();
-                    headers.append('Access-Control-Request-Headers', 'Content-Type');
-                    headers.append('Access-Control-Request-Method', 'POST');
-                    headers.append('Content-Type', 'application/json');
-                    headers.append('Access-Control-Allow-Origin', '*');
-                    console.log("input===", input, headers);
-                    return this.http.post("http://localhost:8081/upload/", input, { "Headers": headers });
                 };
                 __decorate([
                     core_1.Input(), 
